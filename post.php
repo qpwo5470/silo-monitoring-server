@@ -13,9 +13,6 @@ $conn = mysqli_connect(
     'silo',
     'device_state');
 
-$sql = "INSERT INTO states(device_name, data) VALUES ('$device', '$data')";
-mysqli_query($conn, $sql);
-mysqli_close($conn);
 
 
 $datetime = date('Y-m-d H:i:s', $time);
@@ -26,6 +23,10 @@ foreach($json as $key => $value){
     $prepend = $prepend.$append;
 }
 
+
+$sql = "INSERT INTO states(device_name, data) VALUES ('$device', '$data')";
+mysqli_query($conn, $sql);
+mysqli_close($conn);
 
 $file = '/logs/'.$device.'_log.txt';
 $fileContents = file_get_contents($file);
