@@ -27,6 +27,6 @@ foreach($json as $key => $value){
 }
 
 
-$file = $device.'_log.txt';
+$file = '/logs/'.$device.'_log.txt';
 $fileContents = file_get_contents($file);
 file_put_contents($file, $prepend . $fileContents);
