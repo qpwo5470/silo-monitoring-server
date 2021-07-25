@@ -22,7 +22,7 @@ $datetime = date('Y-m-d H:i:s', $time);
 $prepend = "[{$datetime}]\t";
 $json = json_decode($data, true);
 foreach($json as $key => $value){
-    $append = strtoupper($key)." : ".$value."\t";
+    $append = strtoupper($key)." : $value\t";
     $prepend = $prepend.$append;
 }
 
