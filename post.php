@@ -28,6 +28,6 @@ $sql = "INSERT INTO states(device_name, data) VALUES ('$device', '$data')";
 mysqli_query($conn, $sql);
 mysqli_close($conn);
 
-$file = '/logs/'.$device.'_log.txt';
+$file = 'logs/'.$device.'_log.txt';
 $fileContents = file_get_contents($file);
 file_put_contents($file, $prepend . $fileContents);
