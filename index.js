@@ -19,7 +19,8 @@ let response = '';
 function write() {
     loadSQL();
     document.getElementById("p1").innerHTML = response;
-    print(response)
+    data = JSON.parse(response)
+    print(data['device_name'])
 }
 
 function setup() {
