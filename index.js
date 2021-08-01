@@ -45,7 +45,6 @@ function write() {
 
 function setup() {
     createCanvas(10, 10);
-    let devices = document.getElementById("devices");
 }
 
 function draw() {
