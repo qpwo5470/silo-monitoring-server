@@ -18,7 +18,8 @@ function appendDevice(jsonData){
 
     let HTMLData = "<div><h1 id='device_name'>" + jsonData['device_name'] + "</h1>";
     HTMLData += "<h2 id='app'>" + data['app'] + "</h2>";
-    HTMLData += "<h3 id='last_data'>Last Data : " + jsonData['time'] + "</h3></div><div>";
+    let timePassed = Date.now()-Date.parse(jsonData['time'])
+    HTMLData += "<h3 id='last_data'>Last Data : " + toString(timePassed) + "</h3></div><div>";
 
     $.each(data,function(key, value){
         if(key !== 'app'){
