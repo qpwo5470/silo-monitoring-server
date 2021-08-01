@@ -15,7 +15,7 @@ function loadSQL() {
 }
 
 function appendDevice(jsonData){
-    var ul_list = $("#ul_list");
+    var ul_list = $("#device_list");
 
     data = JSON.parse(jsonData['data'].replace(/\\/, ''));
 
