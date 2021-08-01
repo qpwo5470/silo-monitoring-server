@@ -20,7 +20,7 @@ function write() {
     loadSQL();
     document.getElementById("p1").innerHTML = response;
     for(let line in response) {
-        if(response(line).length>0) {
+        if(response[line].length>0) {
             data = JSON.parse(response[line])
             print(data['device_name'])
         }
