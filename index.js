@@ -14,21 +14,32 @@ function loadSQL() {
     });
 }
 
+function appendDevice(jsonData){
+    var ul_list = $("#ul_list");
+
+    data = JSON.parse(jsonData['data'].replace(/\\/, ''));
+
+    HTMLData = "<h1>"+jsonData['device_name']+"</h1>";
+    HTMLData += "<h2>"+data['app']+"</h2>";
+    HTMLData += "<h3>Last Data : "+jsonData['time']+"</h3>";
+
+    ul_list.append("<li>"+HTMLData+"</li>");
+}
+
 let response = '';
 
 function write() {
     loadSQL();
-    document.getElementById("p1").innerHTML = response;
     for(let line in response) {
         if(response[line].length>0) {
-            data = JSON.parse(response[line])
-            print(data['device_name'])
+            json = JSON.parse(response[line]);
         }
     }
 }
 
 function setup() {
     createCanvas(10, 10);
+    let devices = document.getElementById("devices");
 }
 
 function draw() {
