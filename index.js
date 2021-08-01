@@ -1,10 +1,8 @@
 
 function loadSQL() {
-    let dataObj = {};
     $.ajax({
-        type: 'POST',
+        type: 'GET',
         url: 'monitor.php',
-        data: dataObj,
         success: function (result) {
             response = result.split(/\r?\n/);
         },
