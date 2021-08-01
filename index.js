@@ -21,7 +21,7 @@ function write() {
     document.getElementById("p1").innerHTML = response;
     for(let line in response) {
         data = JSON.parse(line)
-        print(data)
+        print(line)
     }
 }
 
