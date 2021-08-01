@@ -66,20 +66,22 @@ function appendDevice(jsonData){
 
     let li = $("#"+jsonData['device_name']);
     if (li.length){
+        commonDiv = li.children('.content').children('.common')
         let timePassed = Date.now()-Date.parse(jsonData['time'])
         let stringTimePassed = getStringTimePassed(timePassed);
         let temp = map(timePassed, 5000, 120000, 0, 255);
         temp = constrain(temp, 0, 255);
         let color = rgb(temp, 255-temp, 0);
 
-        let lastUpdate = li.children('.last_update');
+        let lastUpdate = commonDiv.children('.last_update');
         console.log(lastUpdate);
         console.log(lastUpdate.length);
         lastUpdate.html("Last Update : " + stringTimePassed);
         lastUpdate.css('color', color);
+        unCommonDiv = li.children('.content').children('.uncommon')
         $.each(data,function(key, value){
             if(key !== 'app'){
-                li.children('.'+key).html(key.toUpperCase() + " : " + value);
+                unCommonDiv.children('.'+key).html(key.toUpperCase() + " : " + value);
             }
         });
     }
