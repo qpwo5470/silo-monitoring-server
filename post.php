@@ -28,8 +28,8 @@ $sql = "SELECT * FROM states WHERE device_name = '$device'";
 
 $exists = mysqli_query($conn, $sql);
 if (count(mysqli_fetch_row($exists))) {
-    $test = json_encode(array('testmsg'=>'FW'));;
-    $sql = "UPDATE states SET data = '$test' WHERE device_name = '$device'";
+    $test = json_encode(array('testmsg'=>'NW'));;
+    $sql = "UPDATE states SET data = '$test', time = '$datetime' WHERE device_name = '$device'";
 }
 else {
     $test = json_encode(array('testmsg'=>'SW'));;
