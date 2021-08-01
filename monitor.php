@@ -10,6 +10,6 @@ $sql = "SELECT * FROM states";
 $data = mysqli_query($conn, $sql);
 
 while ($datum = mysqli_fetch_array($data)) {
-    echo str_replace(json_encode($datum), '\\"', '"');
+    echo json_encode($datum);
 }
 ?>
