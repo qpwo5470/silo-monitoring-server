@@ -73,6 +73,8 @@ function appendDevice(jsonData){
         let color = rgb(temp, 255-temp, 0);
 
         let lastUpdate = li.children('.last_update');
+        console.log(lastUpdate);
+        console.log(lastUpdate.length);
         lastUpdate.html("Last Update : " + stringTimePassed);
         lastUpdate.css('color', color);
         $.each(data,function(key, value){
