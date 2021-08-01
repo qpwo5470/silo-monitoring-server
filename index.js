@@ -11,6 +11,21 @@ function loadSQL() {
     }).done(function () {
     });
 }
+function rgb(r, g, b){
+    r = Math.floor(r);
+    g = Math.floor(g);
+    b = Math.floor(b);
+    return ["rgb(",r,",",g,",",b,")"].join("");
+}
+
+function map(src, srcMin, srcMax, dstMin, dstMax){
+    let dst = (src-srcMin)/(srcMax-srcMin)*(dstMax-dstMin)+dstMin;
+    return dst;
+}
+
+function constrain(src, min, max){
+    return Math.max(Math.min(src, max), min);
+}
 
 function appendDevice(jsonData){
     let ul_list = $("#device_list");
@@ -30,7 +45,11 @@ function appendDevice(jsonData){
     if(m) stringTimePassed += m + "\" ";
     stringTimePassed += s + "s";
 
-    HTMLData += "<h3 class='last_data' style=\"color:#555\">Last Data : " + stringTimePassed + "</h3></div><div class='uncommon'>";
+    let temp = map(timePassed, 5, 120, 0, 255);
+    temp = constrain(temp, 0, 255);
+    let color = rgb(temp, 255-temp, 0);
+
+    HTMLData += "<h3 class='last_data' style=\"color:" + color + "\">Last Data : " + stringTimePassed + "</h3></div><div class='uncommon'>";
 
     $.each(data,function(key, value){
         if(key !== 'app'){
