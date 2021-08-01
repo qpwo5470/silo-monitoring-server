@@ -30,7 +30,7 @@ function appendDevice(jsonData){
     if(m) stringTimePassed += m + "\" ";
     stringTimePassed += s + "s";
 
-    HTMLData += "<h3 class='last_data'>Last Data : " + stringTimePassed + "</h3></div><div class='uncommon'>";
+    HTMLData += "<h3 class='last_data' style=\"color:#555\">Last Data : " + stringTimePassed + "</h3></div><div class='uncommon'>";
 
     $.each(data,function(key, value){
         if(key !== 'app'){
