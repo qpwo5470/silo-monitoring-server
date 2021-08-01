@@ -45,7 +45,7 @@ function appendDevice(jsonData){
     if(m) stringTimePassed += m + "\" ";
     stringTimePassed += s + "s";
 
-    let temp = map(timePassed, 5, 120, 0, 255);
+    let temp = map(timePassed, 5000, 120000, 0, 255);
     temp = constrain(temp, 0, 255);
     let color = rgb(temp, 255-temp, 0);
 
