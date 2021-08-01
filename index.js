@@ -22,9 +22,7 @@ function appendDevice(jsonData){
 
     let li = $("#"+jsonData['device_name']);
     if (li.length){
-        li.children('#device_name').innerHTML = jsonData['device_name'];
-        li.children('#app').innerHTML = data['app'];
-        li.children('#last_data').innerHTML = jsonData['time'];
+        li.html(HTMLData);
     }
     else {
         ul_list.append("<li id=\"" + jsonData['device_name'] + "\">" + HTMLData + "</li>");
