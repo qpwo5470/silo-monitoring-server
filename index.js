@@ -27,14 +27,7 @@ function constrain(src, min, max){
     return Math.max(Math.min(src, max), min);
 }
 
-function appendDevice(jsonData){
-    let ul_list = $("#device_list");
-    let data = JSON.parse(jsonData['data'].replace(/\\/, ''));
-
-    let HTMLData = "<button type='button' class='collapsible device_name'>" + jsonData['device_name'] + "</button>";
-    HTMLData += "<div class='content'><div class='common'>";
-    HTMLData += "<h2 class='app'>" + data['app'] + "</h2>";
-    let timePassed = Date.now()-Date.parse(jsonData['time'])
+function getStringTimePassed(timePassed){
     let days,h,m,s;
     days = Math.floor(timePassed/1000/60/60/24);
     h = Math.floor(timePassed/1000/60/60 - days*24);
@@ -45,6 +38,18 @@ function appendDevice(jsonData){
     if(h) stringTimePassed += h + "h ";
     if(m) stringTimePassed += m + "min ";
     stringTimePassed += s + "s";
+    return stringTimePassed;
+}
+
+function appendDevice(jsonData){
+    let ul_list = $("#device_list");
+    let data = JSON.parse(jsonData['data'].replace(/\\/, ''));
+
+    let HTMLData = "<button type='button' class='collapsible device_name'>" + jsonData['device_name'] + "</button>";
+    HTMLData += "<div class='content'><div class='common'>";
+    HTMLData += "<h2 class='app'>" + data['app'] + "</h2>";
+    let timePassed = Date.now()-Date.parse(jsonData['time'])
+    let stringTimePassed = getStringTimePassed(timePassed);
 
     let temp = map(timePassed, 5000, 120000, 0, 255);
     temp = constrain(temp, 0, 255);
@@ -61,7 +66,20 @@ function appendDevice(jsonData){
 
     let li = $("#"+jsonData['device_name']);
     if (li.length){
-        li.html(HTMLData);
+        let timePassed = Date.now()-Date.parse(jsonData['time'])
+        let stringTimePassed = getStringTimePassed(timePassed);
+        let temp = map(timePassed, 5000, 120000, 0, 255);
+        temp = constrain(temp, 0, 255);
+        let color = rgb(temp, 255-temp, 0);
+
+        let lastUpdate = li.children('#last_update');
+        lastUpdate.html("Last Update : " + stringTimePassed);
+        lastUpdate.css('color', color);
+        $.each(data,function(key, value){
+            if(key !== 'app'){
+                li.children('#'+key).html(key.toUpperCase() + " : " + value);
+            }
+        });
     }
     else {
         ul_list.append("<li id=\"" + jsonData['device_name'] + "\">" + HTMLData + "</li>");
