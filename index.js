@@ -31,7 +31,8 @@ function appendDevice(jsonData){
     let ul_list = $("#device_list");
     let data = JSON.parse(jsonData['data'].replace(/\\/, ''));
 
-    let HTMLData = "<div class='common'><h1 class='device_name'>" + jsonData['device_name'] + "</h1>";
+    let HTMLData = "<button type='button' class='collapsible device_name'>" + jsonData['device_name'] + "</button>";
+    HTMLData += "<div class='content'><div class='common'>";
     HTMLData += "<h2 class='app'>" + data['app'] + "</h2>";
     let timePassed = Date.now()-Date.parse(jsonData['time'])
     let days,h,m,s;
@@ -56,7 +57,7 @@ function appendDevice(jsonData){
             HTMLData += "<h4 class='" + key + "'>" + key.toUpperCase() + " : " + value + "</h4>";
         }
     });
-    HTMLData += "</div>";
+    HTMLData += "</div></div>";
 
     let li = $("#"+jsonData['device_name']);
     if (li.length){
@@ -76,6 +77,20 @@ function write() {
             let json = JSON.parse(response[line]);
             appendDevice(json);
         }
+    }
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight){
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
     }
 }
 
