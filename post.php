@@ -28,11 +28,11 @@ $sql = "SELECT * FROM states WHERE device_name = '$device'";
 
 $exists = mysqli_query($conn, $sql);
 if (count(mysqli_fetch_row($exists))) {
-    $test = 'fasdfasd';
+    $test = json_encode(array('testmsg'=>'FW'));;
     $sql = "UPDATE states SET data = '$test' WHERE device_name = '$device'";
 }
 else {
-    $test = 'shsishie';
+    $test = json_encode(array('testmsg'=>'SW'));;
     $sql = "INSERT INTO states(device_name, data) VALUES ('$device', '$test')";
 }
 mysqli_query($conn, $sql);
