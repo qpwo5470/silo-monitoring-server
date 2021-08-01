@@ -32,7 +32,8 @@ if (count(mysqli_fetch_row($exists))) {
     $sql = "UPDATE states SET data = '$test' WHERE device_name = '$device'";
 }
 else {
-    $sql = "INSERT INTO states(device_name, data) VALUES ('$device', '$data')";
+    $test = 'shsishie';
+    $sql = "INSERT INTO states(device_name, data) VALUES ('$device', '$test')";
 }
 mysqli_query($conn, $sql);
 mysqli_close($conn);
