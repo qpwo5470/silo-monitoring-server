@@ -28,10 +28,10 @@ $sql = "SELECT * FROM states WHERE device_name = '$device'";
 
 $exists = mysqli_query($conn, $sql);
 if (mysqli_fetch_array($exists)) {
-    $sql = "UPDATE status SET data = '$data', time = '$datetime' WHERE device_name = '$device'";
+    $sql = "UPDATE states SET data = '$data' WHERE device_name = '$device'";
 }
 else {
-    $sql = "INSERT INTO states(device_name, time, data) VALUES ('$device','$datetime', '$data')";
+    $sql = "INSERT INTO states(device_name, data) VALUES ('$device', '$data')";
 }
 mysqli_query($conn, $sql);
 mysqli_close($conn);
