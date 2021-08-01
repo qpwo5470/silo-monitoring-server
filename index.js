@@ -16,17 +16,15 @@ function appendDevice(jsonData){
     let ul_list = $("#device_list");
     let data = JSON.parse(jsonData['data'].replace(/\\/, ''));
 
+    let HTMLData = "<h1 id='device_name'>" + jsonData['device_name'] + "</h1>";
+    HTMLData += "<h2 id='app'>" + data['app'] + "</h2>";
+    HTMLData += "<h3 id='last_data'>Last Data : " + jsonData['time'] + "</h3>";
 
     let li = $("#"+jsonData['device_name']);
     if (li.length){
-        li.children('#device_name').innerHTML = jsonData['device_name'];
-        li.children('#app').innerHTML = jsonData['app'];
-        li.children('#last_data').innerHTML = jsonData['time'];
+        li.innerHTML = HTMLData;
     }
     else {
-        let HTMLData = "<h1 id='device_name'>" + jsonData['device_name'] + "</h1>";
-        HTMLData += "<h2 id='app'>" + data['app'] + "</h2>";
-        HTMLData += "<h3 id='last_data'>Last Data : " + jsonData['time'] + "</h3>";
         ul_list.append("<li id=\"" + jsonData['device_name'] + "\">" + HTMLData + "</li>");
     }
 }
