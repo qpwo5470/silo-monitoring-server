@@ -27,7 +27,7 @@ $prepend = $prepend . "\n";
 $sql = "SELECT * FROM states WHERE device_name = '$device'";
 
 $exists = mysqli_query($conn, $sql);
-if (mysqli_fetch_array($exists)) {
+if (count(mysqli_fetch_row($exists))) {
     $sql = "UPDATE states SET data = '$data' WHERE device_name = '$device'";
 }
 else {
