@@ -28,12 +28,10 @@ $sql = "SELECT * FROM states WHERE device_name = '$device'";
 
 $exists = mysqli_query($conn, $sql);
 if (count(mysqli_fetch_row($exists))) {
-    $test = json_encode(array('testmsg'=>'NW'));;
-    $sql = "UPDATE states SET data = '$test', time = '$datetime' WHERE device_name = '$device'";
+    $sql = "UPDATE states SET data = '$data', time = '$datetime' WHERE device_name = '$device'";
 }
 else {
-    $test = json_encode(array('testmsg'=>'SW'));;
-    $sql = "INSERT INTO states(device_name, data) VALUES ('$device', '$test')";
+    $sql = "INSERT INTO states(device_name, data) VALUES ('$device', '$data')";
 }
 mysqli_query($conn, $sql);
 mysqli_close($conn);
