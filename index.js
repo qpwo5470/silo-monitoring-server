@@ -32,7 +32,8 @@ function write() {
     loadSQL();
     for(let line in response) {
         if(response[line].length>0) {
-            json = JSON.parse(response[line]);
+            let json = JSON.parse(response[line]);
+            appendDevice(json);
         }
     }
 }
