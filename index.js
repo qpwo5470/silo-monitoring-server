@@ -22,8 +22,9 @@ function appendDevice(jsonData){
 
     let li = $("#"+jsonData['device_name']);
     if (li.length){
-        $("#"+jsonData['device_name']).innerHTML = HTMLData;
-        print(HTMLData);
+        li.children('#device_name').innerHTML = jsonData['device_name'];
+        li.children('#app').innerHTML = jsonData['app'];
+        li.children('#last_data').innerHTML = jsonData['time'];
     }
     else {
         ul_list.append("<li id=\"" + jsonData['device_name'] + "\">" + HTMLData + "</li>");
@@ -44,7 +45,7 @@ function write() {
 
 function setup() {
     createCanvas(10, 10);
-    frameRate(1)
+    frameRate(1);
 }
 
 function draw() {
