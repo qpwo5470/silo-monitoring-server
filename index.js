@@ -21,6 +21,7 @@ function appendDevice(jsonData){
     let timePassed = Date.now()-Date.parse(jsonData['time'])
     console.log(Date.now());
     console.log(Date.parse(jsonData['time']));
+    console.log(timePassed);
     let days,h,m,s;
     days = Math.floor(timePassed/1000/60/60/24);
     h = Math.floor((timePassed/1000/60/60/24 - days)*60);
