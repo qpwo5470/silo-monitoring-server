@@ -43,6 +43,7 @@ function write() {
 
 function setup() {
     createCanvas(10, 10);
+    frameRate(1)
 }
 
 function draw() {
