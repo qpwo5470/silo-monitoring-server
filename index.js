@@ -6,7 +6,7 @@ function loadSQL() {
         url: 'monitor.php',
         data: dataObj,
         success: function (result) {
-            response = result.split(/\r?\n/);
+            response = result.split(/}{/);
         },
         error: function () {
         }
