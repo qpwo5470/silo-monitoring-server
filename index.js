@@ -19,9 +19,6 @@ function appendDevice(jsonData){
     let HTMLData = "<div><h1 id='device_name'>" + jsonData['device_name'] + "</h1>";
     HTMLData += "<h2 id='app'>" + data['app'] + "</h2>";
     let timePassed = Date.now()-Date.parse(jsonData['time'])
-    console.log(Date.now());
-    console.log(Date.parse(jsonData['time']));
-    console.log(timePassed);
     let days,h,m,s;
     days = Math.floor(timePassed/1000/60/60/24);
     h = Math.floor(timePassed/1000/60/60 - days*24);
