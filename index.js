@@ -22,7 +22,7 @@ function appendDevice(jsonData){
 
     $.each(data,function(key, value){
         if(key !== 'app'){
-            HTMLData += "<h4 id='" + data[i] + "'>" + key.toUpperCase() + " : " + value + "</h4>";
+            HTMLData += "<h4 id='" + key + "'>" + key.toUpperCase() + " : " + value + "</h4>";
         }
     });
     HTMLData += "</div>";
