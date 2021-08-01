@@ -25,10 +25,13 @@ function appendDevice(jsonData){
     let li = $("#"+jsonData['device_name']);
     if (li.length){
         li.value = HTMLData;
+        print('a');
     }
     else {
         ul_list.append("<li id=\"" + jsonData['device_name'] + "\">" + HTMLData + "</li>");
+        print('b');
     }
+    print('.');
 }
 
 let response = '';
