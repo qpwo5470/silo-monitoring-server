@@ -19,9 +19,9 @@ function appendDevice(jsonData){
 
     let li = $("#"+jsonData['device_name']);
     if (li.length){
-        li.children('#device_name').textContent = jsonData['device_name']
-        li.children('#app').textContent = jsonData['app']
-        li.children('#last_data').textContent = jsonData['time']
+        li.children('#device_name').innerHTML = jsonData['device_name'];
+        li.children('#app').innerHTML = jsonData['app'];
+        li.children('#last_data').innerHTML = jsonData['time'];
     }
     else {
         let HTMLData = "<h1 id='device_name'>" + jsonData['device_name'] + "</h1>";
