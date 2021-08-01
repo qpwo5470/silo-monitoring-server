@@ -26,8 +26,8 @@ function appendDevice(jsonData){
     s = Math.floor((((timePassed/1000/60/60/24 - days)*60 - h)*60 - m)*60);
     let stringTimePassed = "";
     if(days) stringTimePassed += days + "d ";
-    if(h) stringTimePassed += days + "h ";
-    if(m) stringTimePassed += days + "min ";
+    if(h) stringTimePassed += h + "h ";
+    if(m) stringTimePassed += m + "min ";
     stringTimePassed += s + "sec";
 
     HTMLData += "<h3 id='last_data'>Last Data : " + stringTimePassed + "</h3></div><div>";
