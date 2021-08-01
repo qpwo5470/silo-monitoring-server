@@ -72,12 +72,12 @@ function appendDevice(jsonData){
         temp = constrain(temp, 0, 255);
         let color = rgb(temp, 255-temp, 0);
 
-        let lastUpdate = li.children('#last_update');
+        let lastUpdate = li.children('.last_update');
         lastUpdate.html("Last Update : " + stringTimePassed);
         lastUpdate.css('color', color);
         $.each(data,function(key, value){
             if(key !== 'app'){
-                li.children('#'+key).html(key.toUpperCase() + " : " + value);
+                li.children('.'+key).html(key.toUpperCase() + " : " + value);
             }
         });
     }
