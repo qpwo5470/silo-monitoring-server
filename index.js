@@ -20,8 +20,8 @@ function write() {
     loadSQL();
     document.getElementById("p1").innerHTML = response;
     for(let line in response) {
-        data = JSON.parse(line)
-        print(line)
+        data = JSON.parse(response[line])
+        print(data)
     }
 }
 
