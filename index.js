@@ -41,15 +41,15 @@ function appendDevice(jsonData){
     s = Math.floor(timePassed/1000 - days*24*60*60 - h*60*60 - m*60);
     let stringTimePassed = "";
     if(days) stringTimePassed += days + "d  ";
-    if(h) stringTimePassed += h + "\' ";
-    if(m) stringTimePassed += m + "\" ";
+    if(h) stringTimePassed += h + "h ";
+    if(m) stringTimePassed += m + "min ";
     stringTimePassed += s + "s";
 
     let temp = map(timePassed, 5000, 120000, 0, 255);
     temp = constrain(temp, 0, 255);
     let color = rgb(temp, 255-temp, 0);
 
-    HTMLData += "<h3 class='last_data' style=\"color:" + color + "\">Last Data : " + stringTimePassed + "</h3></div><div class='uncommon'>";
+    HTMLData += "<h3 class='last_update' style=\"color:" + color + "\">Last Update : " + stringTimePassed + "</h3></div><div class='uncommon'>";
 
     $.each(data,function(key, value){
         if(key !== 'app'){
