@@ -6,7 +6,7 @@ function loadSQL() {
         url: 'monitor.php',
         data: dataObj,
         success: function (result) {
-            response = result;
+            response = result.replace(/\\/g, '');
         },
         error: function () {
         }
@@ -19,7 +19,7 @@ let response = '';
 function write() {
     loadSQL();
     document.getElementById("p1").innerHTML = response;
-    print(response['device_name'])
+    print(response)
 }
 
 function setup() {
