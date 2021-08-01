@@ -24,7 +24,7 @@ foreach ($json as $key => $value) {
 $prepend = $prepend . "\n";
 
 
-$sql = "SELECT * FROM states WHERE device_name = $device";
+$sql = "SELECT * FROM states WHERE device_name = '$device'";
 
 $exists = mysqli_query($conn, $sql);
 if (mysqli_fetch_array($exists)) {
