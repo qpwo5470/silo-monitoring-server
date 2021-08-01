@@ -9,7 +9,7 @@ $sql = "SELECT * FROM states";
 
 $data = mysqli_query($conn, $sql);
 
-while ($datum = mysqli_fetch_array($data)) {
+while ($datum = mysqli_fetch_assoc($data)) {
     echo json_encode($datum);
 }
 ?>
