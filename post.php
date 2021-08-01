@@ -24,7 +24,15 @@ foreach ($json as $key => $value) {
 $prepend = $prepend . "\n";
 
 
-$sql = "INSERT INTO states(device_name, data) VALUES ('$device', '$data')";
+$sql = "SELECT * FROM states WHERE device = $device";
+
+$exists = mysqli_query($conn, $sql);
+if (mysqli_fetch_array($exists)) {
+    $sql = "UPDATE status SET data = '$data' WHERE device_name = '$device'";
+}
+else {
+    $sql = "INSERT INTO states(device_name, data) VALUES ('$device', '$data')";
+}
 mysqli_query($conn, $sql);
 mysqli_close($conn);
 
