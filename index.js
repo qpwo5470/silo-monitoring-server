@@ -16,9 +16,16 @@ function appendDevice(jsonData){
     let ul_list = $("#device_list");
     let data = JSON.parse(jsonData['data'].replace(/\\/, ''));
 
-    let HTMLData = "<h1 id='device_name'>" + jsonData['device_name'] + "</h1>";
+    let HTMLData = "<div><h1 id='device_name'>" + jsonData['device_name'] + "</h1>";
     HTMLData += "<h2 id='app'>" + data['app'] + "</h2>";
-    HTMLData += "<h3 id='last_data'>Last Data : " + jsonData['time'] + "</h3>";
+    HTMLData += "<h3 id='last_data'>Last Data : " + jsonData['time'] + "</h3></div><div>";
+
+    $.each(data,function(key, value){
+        if(key !== 'app'){
+            HTMLData += "<h4 id='" + data[i] + "'>" + key.toUpperCase() + " : " + value + "</h4>";
+        }
+    });
+    HTMLData += "</div>";
 
     let li = $("#"+jsonData['device_name']);
     if (li.length){
