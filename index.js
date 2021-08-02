@@ -78,6 +78,7 @@ function appendDevice(jsonData){
         console.log(lastUpdate.length);
         lastUpdate.html("Last Update : " + stringTimePassed);
         lastUpdate.css('color', color);
+
         unCommonDiv = li.children('.content').children('.uncommon')
         $.each(data,function(key, value){
             if(key !== 'app'){
