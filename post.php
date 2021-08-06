@@ -45,7 +45,7 @@ $sql = "SELECT reboot FROM states WHERE device_name = '$device'";
 $data = mysqli_query($conn, $sql);
 
 while ($datum = mysqli_fetch_array($data)) {
-    echo $datum;
+    echo $datum[0];
 }
 
 $sql = "UPDATE states SET reboot = 0 WHERE device_name = '$device'";
