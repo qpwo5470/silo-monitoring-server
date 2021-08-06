@@ -77,7 +77,7 @@ function appendDevice(jsonData){
             HTMLData += "<h4 class='" + key + "'>" + key.toUpperCase() + " : " + value + "</h4>";
         }
     });
-    HTMLData += "<button type='button' class='reset_button' onclick=reboot(" + jsonData['device_name'] + ");> REBOOT </button>" ;
+    HTMLData += "<button type='button' class='reset_button' onclick=reboot('" + jsonData['device_name'] + "');> REBOOT </button>" ;
     HTMLData += "</div></div>";
 
     let li = $("#"+jsonData['device_name']);
@@ -90,8 +90,6 @@ function appendDevice(jsonData){
         let color = rgb(temp, 255-temp, 0);
 
         let lastUpdate = commonDiv.children('.last_update');
-        console.log(lastUpdate);
-        console.log(lastUpdate.length);
         lastUpdate.html("Last Update : " + stringTimePassed);
         lastUpdate.css('color', color);
 
