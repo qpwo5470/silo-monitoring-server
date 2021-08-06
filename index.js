@@ -11,6 +11,20 @@ function loadSQL() {
     }).done(function () {
     });
 }
+
+function reboot(deviceName){
+    $.ajax({
+        type: 'POST',
+        url: 'reboot.php',
+        data: {'device_name': deviceName},
+        success: function (result) {
+        },
+        error: function () {
+        }
+    }).done(function () {
+    });
+}
+
 function rgb(r, g, b){
     r = Math.floor(r);
     g = Math.floor(g);
@@ -45,9 +59,10 @@ function appendDevice(jsonData){
     let ul_list = $("#device_list");
     let data = JSON.parse(jsonData['data'].replace(/\\/, ''));
 
-    let HTMLData = "<button type='button' class='collapsible device_name'>" + jsonData['device_name'] + "</button>";
+    let HTMLData = "<button type='button' class='collapsible " + jsonData['device_name'] + "'>" + jsonData['device_name'] + "</button>";
     HTMLData += "<div class='content'><div class='common'>";
     HTMLData += "<h2 class='app'>" + data['app'] + "</h2>";
+    HTMLData += "<h2 class='app'>" + data['local_ip'] + "</h2>";
     let timePassed = Date.now()-Date.parse(jsonData['time'])
     let stringTimePassed = getStringTimePassed(timePassed);
 
@@ -62,6 +77,7 @@ function appendDevice(jsonData){
             HTMLData += "<h4 class='" + key + "'>" + key.toUpperCase() + " : " + value + "</h4>";
         }
     });
+    HTMLData += "<button type='button' class='reset_button' onclick=reboot(" + jsonData['device_name'] + ");> REBOOT </button>" ;
     HTMLData += "</div></div>";
 
     let li = $("#"+jsonData['device_name']);
